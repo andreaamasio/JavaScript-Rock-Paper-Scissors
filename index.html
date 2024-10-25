@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function to create randomly computer choice between rock, paper, scissors
+        let humanScore = 0
+        let computerScore = 0
+
+        function getComputerChoice() {
+            let ran = Math.random()
+            let comp_choice = ""
+            if (ran<0.33){
+                comp_choice="rock"
+            } else if (ran<0.66) {
+                comp_choice="paper"
+            } else {
+                comp_choice="scissors"
+            }
+            return comp_choice
+        }
+        
+        // function to get human choice
+        function getHumanChoice() {
+            let hum_choice=prompt("Rock, Paper or Scissors?")
+            console.log(hum_choice)
+        }
+        getHumanChoice()
+    </script>
+</body>
+</html>
