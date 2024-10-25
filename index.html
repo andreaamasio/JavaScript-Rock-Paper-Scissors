@@ -6,30 +6,45 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-        // function to create randomly computer choice between rock, paper, scissors
-        let humanScore = 0
-        let computerScore = 0
+    <script>           
+        function playGame(){
+            // clear console if game restart
+            console.clear()
+            // declaring initial scores
+            let humanScore = 0
+            let computerScore = 0
 
-        function getComputerChoice() {
-            let ran = Math.random()
-            let comp_choice = ""
-            if (ran<0.33){
-                comp_choice="rock"
-            } else if (ran<0.66) {
-                comp_choice="paper"
-            } else {
-                comp_choice="scissors"
+            // function to create randomly computer choice between rock, paper, scissors        
+
+            function getComputerChoice() {
+                let ran = Math.random()
+                let comp_choice = ""
+                if (ran<0.33){
+                    comp_choice="rock"
+                } else if (ran<0.66) {
+                    comp_choice="paper"
+                } else {
+                    comp_choice="scissors"
+                }
+                return comp_choice
             }
-            return comp_choice
-        }
-        
-        // function to get human choice, change it to lowercase
-        function getHumanChoice() {
-            let hum_choice=prompt("Rock, Paper or Scissors?").toLowerCase().trim()
-            return hum_choice
-        }
-        function playRound(humanChoice,computerChoice){
+            
+            // function to get human choice,
+            function getHumanChoice(phrase="Rock, Paper or Scissors?") {
+                // collect prompt and change to lowercase and trim
+                let hum_choice=prompt(phrase).toLowerCase().trim();
+                // validate prompt
+                const valid_choices = ["rock", "paper", "scissors"];                
+                if (valid_choices.includes(hum_choice)){
+                    return hum_choice
+                } else {
+                    getHumanChoice("Invalid choice, try again: Rock, Paper or Scissors?")
+                }
+                
+            }
+
+            // function for doing one round, print result of the round and increment score
+            function playRound(humanChoice,computerChoice){
             console.log(`Computer chose ${computerChoice}.`)
             if (humanChoice==="rock" && computerChoice==="paper"){
                 computerScore++;
@@ -53,8 +68,26 @@
                 console.log("It's a draft!")
             }
             console.log(`Human score: ${humanScore}, Computer score: ${computerScore}`)
+            }
+            // play 5 rounds
+            for (let i = 0; i < 5; i++) {
+                playRound(getHumanChoice(),getComputerChoice())
+                
+            }
+            if (humanScore>computerScore){
+                console.log("Congratulations! You won the game!")                
+            } else if (humanScore===computerScore){
+                console.log("Tha game ended in a draft!")
+            } else {
+                console.log("You lost the game!") 
+            }
+            let restart=confirm("Play again? Click OK if Yes")
+            if (restart) {
+                playGame()
+            }
         }
-        playRound(getHumanChoice(),getComputerChoice())
+        
+        playGame()
     </script>
 </body>
 </html>
