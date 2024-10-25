@@ -24,12 +24,37 @@
             return comp_choice
         }
         
-        // function to get human choice
+        // function to get human choice, change it to lowercase
         function getHumanChoice() {
-            let hum_choice=prompt("Rock, Paper or Scissors?")
-            console.log(hum_choice)
+            let hum_choice=prompt("Rock, Paper or Scissors?").toLowerCase().trim()
+            return hum_choice
         }
-        getHumanChoice()
+        function playRound(humanChoice,computerChoice){
+            console.log(`Computer chose ${computerChoice}.`)
+            if (humanChoice==="rock" && computerChoice==="paper"){
+                computerScore++;
+                console.log("You lose! Paper beats Rock")
+            } else if (humanChoice==="rock" && computerChoice==="scissors") {
+                humanScore++;
+                console.log("You win! Rock beats Scissors")
+            } else if (humanChoice==="paper" && computerChoice==="rock") {
+                humanScore++;
+                console.log("You win! Paper beats Rock")
+            } else if (humanChoice==="paper" && computerChoice==="scissors") {
+                computerScore++;
+                console.log("You lose! Scissors beats Paper")
+            } else if (humanChoice==="scissors" && computerChoice==="paper") {
+                humanScore++;
+                console.log("You win! Scissors beats paper")
+            } else if (humanChoice==="scissors" && computerChoice==="rock"){
+                computerScore++;
+                console.log("You lose! Rock beats Scissors")  
+            } else {
+                console.log("It's a draft!")
+            }
+            console.log(`Human score: ${humanScore}, Computer score: ${computerScore}`)
+        }
+        playRound(getHumanChoice(),getComputerChoice())
     </script>
 </body>
 </html>
