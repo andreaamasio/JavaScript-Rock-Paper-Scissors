@@ -1,0 +1,22 @@
+* {
+    font-family: monaco, sans-serif;
+}
+button {
+    width: 150px;
+    height: auto;
+    font-size: 22px;
+}
+
+h2 {
+    font-size: 46px;
+}
+.round-result {
+    white-space: pre;
+    font-size: 32px;
+}
+.score {
+    font-size: 36px;
+    font-weight: bold;
+    color: red;
+
+}
